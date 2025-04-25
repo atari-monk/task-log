@@ -1,0 +1,6 @@
+__pycache__
+venv
+task_log.egg-info
+.pytest_cache
+.coverage
+.ruff_cache

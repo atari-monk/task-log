@@ -1,0 +1,44 @@
+Task Log Script.
+
+Cli to track task time.
+
+Assumptions:
+
+- Development Process:
+  1. Write unit tests first.
+  2. Write feature code to pass tests.
+- Code Style:
+  - python.
+  - No comments, self-documenting code only.
+
+Paths:
+
+- class DbPath.
+  - constructing db path.
+  - properties:
+  - DataRepoPath.
+  - DbFolder.
+  - DbPath = DataRepoPath + DbFolder.
+  - check/generate folders.
+
+- class DbTable.
+  - constructing db table path.
+  - parameters:
+  - DbPath class.
+  - lambda to generate name.
+  - methods:
+  - getTablePath.
+    - file extension param, defaults to json.
+    - uses parameters to return table path.
+
+Models:
+
+- dataclass Project, Task, Record.
+
+- shared methods:
+  - validation methods.
+  - loading List[ModelType] from json file.
+  - get string with objects list.
+
+- Record methods:
+  - method loading last record from json file.
