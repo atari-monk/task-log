@@ -2,7 +2,7 @@ import pytest
 import shutil
 import tempfile
 from pathlib import Path
-from core.task_log.json_db.db_path import DbPath
+from task_log.json_db.db_path import DbPath
 
 
 @pytest.fixture

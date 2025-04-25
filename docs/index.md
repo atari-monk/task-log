@@ -6,4 +6,4 @@ layout: default
 
 ## Documentation
 
-- [Task Log](core/task_log.md)
+- [Task Log](task_log.md)

@@ -7,7 +7,7 @@ from task_log.json_db.db_table_path import DbTablePath
 class DbInfo:
     def __init__(self):
         self.db_path = DbPath(
-            Path(r"C:\atari-monk\code\utility-scripts-data"), "task_log"
+            Path(r"C:\atari-monk\code\dev-data"), "task_log"
         )
         self.proj_table = DbTablePath(self.db_path, name_func=lambda: "projects")
 
