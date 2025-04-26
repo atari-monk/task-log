@@ -113,6 +113,7 @@ def main():
         CliController(
             project_crud,
             task_crud,
+            record_crud,
             project_cli_controller,
             task_cli_controller,
             record_cli_controller,

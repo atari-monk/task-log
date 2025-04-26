@@ -15,6 +15,17 @@ class RecordCrud:
         record_table = self._db_info.get_record_table(project.name)
         Record.update_in_json(record, record_table.path)
 
-    def get_all(self, project: Project):
+    def get_by_project(self, project: Project):
         record_table = self._db_info.get_record_table(project.name)
         return Record.load_from_json(record_table.path)
+
+    def get_all(self, projects: list[Project]) -> list[Record]:
+        items = []
+        for project in projects:
+            try:
+                record_table = self._db_info.get_record_table(project.name)
+                project_records = Record.load_from_json(record_table.path)
+                items.extend(project_records)
+            except (AttributeError, FileNotFoundError) as e:
+                continue
+        return items

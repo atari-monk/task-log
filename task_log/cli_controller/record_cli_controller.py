@@ -122,7 +122,7 @@ class RecordCliController:
     def update_record(self):
         project = self._proj_cli_controller.select_project()
         task = self._task_cli_controller.select_task(project)
-        records = self._record_crud.get_all(project)
+        records = self._record_crud.get_by_project(project)
 
         open_records = [r for r in records if r.task_id == task.id and not r.end_time]
         if not open_records:
@@ -148,8 +148,15 @@ class RecordCliController:
         if task is None:
             task = self._task_cli_controller.select_task(project)
         if records is None:
-            records = self._record_crud.get_all(project)
+            records = self._record_crud.get_by_project(project)
         print(f"\nRecords of {project.name}")
         print("-" * 20)
         records = [record for record in records if record.task_id == task.id]
         print(Record.get_table_string(records) + "\n")
+
+    def print_all(self, items: list[Record] = None):
+        if items is None:
+            items = self._record_crud.get_all()
+        print(f"\nRecords")
+        print("-" * 20)
+        print(Record.get_table_string(items) + "\n")

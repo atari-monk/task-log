@@ -52,7 +52,7 @@ class TaskCliController:
         if project is None:
             project = self._proj_cli_controller.select_project()
 
-        tasks = self._task_crud.get_all(project)
+        tasks = self._task_crud.get_by_project(project)
         if not tasks:
             raise ValueError("No tasks available to select")
 
@@ -73,7 +73,7 @@ class TaskCliController:
         if project is None:
             project = self._proj_cli_controller.select_project()
         if tasks is None:
-            tasks = self._task_crud.get_all(project)
+            tasks = self._task_crud.get_by_project(project)
         print(f"\nTasks of {project.name}")
         print("-" * 20)
         print(Task.get_table_string(tasks) + "\n")
@@ -82,3 +82,10 @@ class TaskCliController:
         print(f"\nTask")
         print("-" * 20)
         print(Task.get_table_string([task]) + "\n")
+
+    def print_all(self, items: list[Task] = None):
+        if items is None:
+            items = self._task_crud.get_all()
+        print(f"\nTasks")
+        print("-" * 20)
+        print(Task.get_table_string(items) + "\n")
