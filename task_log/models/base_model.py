@@ -118,3 +118,13 @@ class BaseModel:
         cls: Type[T], file_path: Path, input_methods: List[Callable]
     ) -> T:
         return from_cli_input(cls, file_path, input_methods)
+    
+    @classmethod
+    def delete_from_json(
+        cls: Type[T],
+        item_id: int,
+        file_path: Path,
+        id_field: str = "id"
+    ) -> None:
+        from task_log.utils.json_class_utils import delete_from_json as util_delete
+        util_delete(cls, item_id, file_path, id_field)

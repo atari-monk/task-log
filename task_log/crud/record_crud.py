@@ -15,6 +15,10 @@ class RecordCrud:
         record_table = self._db_info.get_record_table(project.name)
         Record.update_in_json(record, record_table.path)
 
+    def delete(self, project: Project, record_id: int):
+        record_table = self._db_info.get_record_table(project.name)
+        Record.delete_from_json(record_id, record_table.path)
+
     def get_by_project(self, project: Project):
         record_table = self._db_info.get_record_table(project.name)
         return Record.load_from_json(record_table.path)

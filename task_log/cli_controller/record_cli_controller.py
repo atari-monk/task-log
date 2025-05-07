@@ -143,6 +143,40 @@ class RecordCliController:
         self._update_from_cli(record_to_update)
         self._record_crud.update(project, record_to_update)
 
+    def delete_record(self):
+        project = self._proj_cli_controller.select_project()
+        records = self._record_crud.get_by_project(project)
+        
+        if not records:
+            print(f"No records found for project: {project.name}")
+            return
+            
+        print("\nSelect record to delete:")
+        print("-" * 20)
+        print(Record.get_table_string(records))
+        
+        while True:
+            try:
+                record_id = int(input("\nEnter record ID to delete (0 to cancel): ").strip())
+                if record_id == 0:
+                    return
+                
+                if not any(r.id == record_id for r in records):
+                    raise ValueError(f"Record with ID {record_id} not found")
+                
+                confirm = input(f"Confirm deletion of record {record_id}? (y/n): ").strip().lower()
+                if confirm == 'y':
+                    self._record_crud.delete(project, record_id)
+                    print(f"Record {record_id} deleted successfully")
+                    return
+                else:
+                    print("Deletion cancelled")
+                    return
+                    
+            except ValueError as e:
+                print(f"Invalid input: {e}")
+                print("Please try again.\n")
+
     def print_records_of_project(
         self, project: Project = None, task: Task = None, records: Record = None
     ):

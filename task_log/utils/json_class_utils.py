@@ -77,3 +77,25 @@ def update_in_json(
         raise ValueError("Item not found in JSON file")
 
     save_to_json(cls, items, file_path)
+
+def delete_from_json(
+    cls: Type[T], 
+    item_id: int, 
+    file_path: Path, 
+    id_field: str = "id"
+) -> None:
+    if not file_path.exists():
+        raise FileNotFoundError(f"File not found: {file_path}")
+
+    try:
+        items = load_from_json(cls, file_path)
+    except (json.JSONDecodeError, IOError) as e:
+        raise IOError(f"Failed to load JSON from {file_path}: {str(e)}")
+
+    original_length = len(items)
+    items = [item for item in items if getattr(item, id_field) != item_id]
+
+    if len(items) == original_length:
+        raise ValueError(f"Item with {id_field}={item_id} not found in JSON file")
+
+    save_to_json(cls, items, file_path)

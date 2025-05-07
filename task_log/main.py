@@ -30,11 +30,12 @@ class Cli:
             "2. New Task",
             "3. New Record",
             "4. End Active Record",
-            "5. Print Projects",
-            "6. Print Tasks",
-            "7. Print Records",
-            "8. Print All",
-            "9. Exit",
+            "5. Delete Record",
+            "6. Print Projects",
+            "7. Print Tasks",
+            "8. Print Records",
+            "9. Print All",
+            "10. Exit",
         ]
 
         title = menu_items[0]
@@ -77,14 +78,16 @@ class Cli:
         elif choice == "4":
             self._record_cli_controller.update_record()
         elif choice == "5":
-            self._project_cli_controller.print_all()
+            self._record_cli_controller.delete_record()
         elif choice == "6":
-            self._task_cli_controller.print_tasks_of_project()
+            self._project_cli_controller.print_all()
         elif choice == "7":
-            self._record_cli_controller.print_records_of_project()
+            self._task_cli_controller.print_tasks_of_project()
         elif choice == "8":
-            self._cli_controller.read_all()
+            self._record_cli_controller.print_records_of_project()
         elif choice == "9":
+            self._cli_controller.read_all()
+        elif choice == "10":
             print("Goodbye!")
             sys.exit()
         else:
