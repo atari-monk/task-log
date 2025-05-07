@@ -27,13 +27,13 @@ class Cli:
             "Task Log Menu",
             "-" * 20 + "\n",
             "1. New Project",
-            "2. Task",
-            "3. Record",
+            "2. New Task",
+            "3. New Record",
             "4. End Active Record",
-            "5. Projects",
-            "6. Tasks",
-            "7. Records",
-            "8. All",
+            "5. Print Projects",
+            "6. Print Tasks",
+            "7. Print Records",
+            "8. Print All",
             "9. Exit",
         ]
 
@@ -65,8 +65,8 @@ class Cli:
             print("\n".join(options))
 
     def run(self):
-        self.display_menu(layout="horizontal")
-        choice = input("\nEnter your choice (1-3): ")
+        self.display_menu(layout="vertical")
+        choice = input("\nEnter your choice (1-9): ")
 
         if choice == "1":
             self._project_cli_controller.from_cli_input()

@@ -31,9 +31,10 @@ class RecordCliController:
             return {"id": Record._get_next_id(record_table.path)}
 
         def get_date():
+            value = datetime.now().strftime("%Y-%m-%d")
             return {
                 "date": Record._get_string_input(
-                    "Date (YYYY-MM-DD): ", "date", allow_empty=False
+                    f"Date (YYYY-MM-DD) [default: {value}]: ", "date", allow_empty=True, default_value=value
                 )
             }
 
@@ -43,7 +44,7 @@ class RecordCliController:
         def get_description():
             return {
                 "description": Record._get_string_input(
-                    "Description: ", "description", max_length=300, allow_empty=False
+                    "Description: ", "description", max_length=300, allow_empty=True
                 )
             }
 
@@ -55,9 +56,10 @@ class RecordCliController:
             }
 
         def get_start_time():
+            value = datetime.now().strftime("%H:%M")
             return {
                 "start_time": Record._get_string_input(
-                    "Start time (HH:MM): ", "start_time", allow_empty=False
+                    f"Start time (HH:MM) [default: {value}]: ", "start_time", allow_empty=True, default_value=value
                 )
             }
 
@@ -78,11 +80,12 @@ class RecordCliController:
 
     def _update_from_cli(self, record: Record) -> None:
         def get_end_time():
+            value = datetime.now().strftime("%H:%M")
             return {
                 "end_time": record._get_string_input(
-                    f"End time (HH:MM) [current: {record.end_time}]: ",
+                    f"End time (HH:MM) [default: {value}]: ",
                     "end_time",
-                    default_value=datetime.now().strftime("%H:%M"),
+                    default_value=value,
                 )
             }
 
