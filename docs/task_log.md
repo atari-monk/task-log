@@ -1,6 +1,6 @@
 # Task Log Script
 
-Cli to track task time.
+Cli to track task time
 
 ## Assumptions
 
