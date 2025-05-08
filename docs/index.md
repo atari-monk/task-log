@@ -2,6 +2,12 @@
 layout: default
 ---
 
+# Task Log
+
+Cli to track tasks
+
 ## Documentation
 
-- [Task Log](task_log.md)
+- [Assumptions](content/assumptions.md)
+- [Models](content/models.md)
+- [Paths](content/paths.md)
