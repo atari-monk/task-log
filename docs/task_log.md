@@ -1,41 +1,37 @@
-# Task Log Script.
+# Task Log Script
 
 Cli to track task time.
 
-## Assumptions:
+## Assumptions
 
-- Development Process:
-  1. Write unit tests first.
-  2. Write feature code to pass tests.
+- Development Process
+  1. Write unit tests first
+  2. Write feature code to pass tests
 - Code Style:
-  - python.
-  - No comments, self-documenting code only.
+  - python
+  - No comments, self-documenting code only
 
 ## Paths:
 
-- class DbPath.
+- class DbPath
 
-  - constructing db path.
-  - repoPath.
-  - dbFolder.
-  - properties:
+  - constructing db path
+  - repoPath
+  - dbFolder
   - path = RepoPath + DbFolder.
-  - methods:
-    - check/generate folders in ctor.
+  - check/generate folders in ctor
 
-- class DbTablePath.
-  - constructing db table path.
-  - parameters:
-  - dbPath of type DbPath.
-  - namingLogic - lambda to generate name.
-  - methods:
-  - getPath.
-    - ext - file extension param, defaults to 'json'.
-    - uses parameters to return table path.
+- class DbTablePath
+  - constructing db table path
+  - dbPath of type DbPath
+  - namingLogic - lambda to generate name
+  - getPath
+    - ext - file extension param, defaults to 'json'
+    - uses parameters to return table path
 
 ## Models:
 
-- dataclass Project, Task, Record.
+- dataclass Project, Task, Record
 
   ```json
   [
@@ -75,9 +71,9 @@ Cli to track task time.
 
 - shared methods:
 
-  - validation methods.
-  - loading List[ModelType] from json file.
-  - get string with objects list.
+  - validation methods
+  - loading List[ModelType] from json file
+  - get string with objects list
 
 - Record methods:
-  - method loading last record from json file.
+  - method loading last record from json file
